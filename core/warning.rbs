@@ -42,19 +42,17 @@ module Warning
   #
   # `:deprecated`
   # :   deprecation warnings
-  #     *   assignment of non-nil value to `$,` and `$;`
-  #     *   keyword arguments
   #
-  #     etc.
+  # *   assignment of non-nil value to `$,` and `$;`
+  # *   keyword arguments
+  # *   proc/lambda without block
+  #
+  # etc.
   #
   # `:experimental`
   # :   experimental features
-  #     *   Pattern matching
   #
-  #
-  # `:performance`
-  # :   performance hints
-  #     *   Shape variation limit
+  # *   Pattern matching
   #
   def self.[]: (category) -> bool
 

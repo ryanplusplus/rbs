@@ -567,9 +567,8 @@ class StringScanner
   # method is obsolete; use #eos? instead.
   #
   #     s = StringScanner.new('test string')
-  #     # These two are opposites
-  #     s.eos? # => false
-  #     s.rest? # => true
+  #     s.eos?              # These two
+  #     s.rest?             # are opposites.
   #
   def rest?: () -> bool
 

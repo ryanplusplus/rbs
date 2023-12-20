@@ -8,47 +8,32 @@ class FalseClass
 
   # <!--
   #   rdoc-file=object.c
-  #   - false & object -> false
-  #   - nil & object   -> false
+  #   - false & obj   -> false
+  #   - nil & obj     -> false
   # -->
-  # Returns `false`:
-  #
-  #     false & true       # => false
-  #     false & Object.new # => false
-  #
-  # Argument `object` is evaluated:
-  #
-  #     false & raise # Raises RuntimeError.
+  # And---Returns `false`. *obj* is always evaluated as it is the argument to a
+  # method call---there is no short-circuit evaluation in this case.
   #
   def &: (untyped obj) -> false
 
   # <!--
   #   rdoc-file=object.c
-  #   - true === other -> true or false
-  #   - false === other -> true or false
-  #   - nil === other -> true or false
+  #   - obj === other   -> true or false
   # -->
-  # Returns `true` or `false`.
-  #
-  # Like Object#==, if `object` is an instance of Object (and not an instance of
-  # one of its many subclasses).
-  #
-  # This method is commonly overridden by those subclasses, to provide meaningful
-  # semantics in `case` statements.
+  # Case Equality -- For class Object, effectively the same as calling `#==`, but
+  # typically overridden by descendants to provide meaningful semantics in `case`
+  # statements.
   #
   def ===: (false) -> true
          | (untyped obj) -> bool
 
   # <!--
   #   rdoc-file=object.c
-  #   - false ^ object -> true or false
-  #   - nil ^ object   -> true or false
+  #   - false ^ obj    -> true or false
+  #   - nil   ^ obj    -> true or false
   # -->
-  # Returns `false` if `object` is `nil` or `false`, `true` otherwise:
-  #
-  #     nil ^ nil        # => false
-  #     nil ^ false      # => false
-  #     nil ^ Object.new # => true
+  # Exclusive Or---If *obj* is `nil` or `false`, returns `false`; otherwise,
+  # returns `true`.
   #
   def ^: (false | nil) -> false
        | (untyped obj) -> bool
@@ -68,14 +53,10 @@ class FalseClass
 
   # <!--
   #   rdoc-file=object.c
-  #   - false | object -> true or false
-  #   - nil   | object -> true or false
+  #   - false | obj   ->   true or false
+  #   - nil   | obj   ->   true or false
   # -->
-  # Returns `false` if `object` is `nil` or `false`, `true` otherwise:
-  #
-  #     nil | nil        # => false
-  #     nil | false      # => false
-  #     nil | Object.new # => true
+  # Or---Returns `false` if *obj* is `nil` or `false`; `true` otherwise.
   #
   def |: (nil | false) -> false
        | (untyped obj) -> bool

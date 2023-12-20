@@ -1517,8 +1517,8 @@ Socket::AF_IMPLINK: Integer
 #
 Socket::AF_INET: Integer
 
-# <!-- rdoc-file=lib/ipaddr.rb -->
-# IPv6 protocol family
+# <!-- rdoc-file=ext/socket/constdefs.c -->
+# IPv6 protocol
 #
 Socket::AF_INET6: Integer
 

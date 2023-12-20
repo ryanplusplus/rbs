@@ -196,6 +196,8 @@ class Numeric
   #     (-r) % r2             # => (119/100)
   #     (-r) %-r2             # => (-21/100)
   #
+  # Numeric#modulo is an alias for Numeric#%.
+  #
   def %: (Numeric) -> Numeric
 
   # Performs addition: the class of the resulting object depends on the class of
@@ -243,6 +245,8 @@ class Numeric
   #     12.abs        #=> 12
   #     (-34.56).abs  #=> 34.56
   #     -34.56.abs    #=> 34.56
+  #
+  # Numeric#magnitude is an alias for Numeric#abs.
   #
   def abs: () -> Numeric
 
@@ -325,9 +329,10 @@ class Numeric
 
   # <!--
   #   rdoc-file=numeric.rb
-  #   - conj -> self
+  #   - num.conj       ->  self
+  #   - num.conjugate  ->  self
   # -->
-  # Returns `self`.
+  # Returns self.
   #
   def conjugate: () -> Numeric
 
@@ -416,9 +421,9 @@ class Numeric
 
   # <!--
   #   rdoc-file=numeric.rb
-  #   - finite? -> true or false
+  #   - num.finite?  ->  true or false
   # -->
-  # Returns `true` if `self` is a finite number, `false` otherwise.
+  # Returns `true` if `num` is a finite number, otherwise returns `false`.
   #
   def finite?: () -> bool
 
@@ -458,7 +463,8 @@ class Numeric
 
   # <!--
   #   rdoc-file=numeric.rb
-  #   - imag -> 0
+  #   - num.imag       ->  0
+  #   - num.imaginary  ->  0
   # -->
   # Returns zero.
   #
@@ -466,21 +472,21 @@ class Numeric
 
   # <!--
   #   rdoc-file=numeric.rb
-  #   - infinite? -> -1, 1, or nil
+  #   - num.infinite?  ->  -1, 1, or nil
   # -->
-  # Returns `nil`, -1, or 1 depending on whether `self` is finite, `-Infinity`, or
-  # `+Infinity`.
+  # Returns `nil`, -1, or 1 depending on whether the value is finite, `-Infinity`,
+  # or `+Infinity`.
   #
   def infinite?: () -> Integer?
 
   # <!--
   #   rdoc-file=numeric.rb
-  #   - integer? -> true or false
+  #   - num.integer?  ->  true or false
   # -->
-  # Returns `true` if `self` is an Integer.
+  # Returns `true` if `num` is an Integer.
   #
-  #     1.0.integer? # => false
-  #     1.integer?   # => true
+  #     1.0.integer?   #=> false
+  #     1.integer?     #=> true
   #
   def integer?: () -> bool
 
@@ -490,6 +496,8 @@ class Numeric
   #     12.abs        #=> 12
   #     (-34.56).abs  #=> 34.56
   #     -34.56.abs    #=> 34.56
+  #
+  # Numeric#magnitude is an alias for Numeric#abs.
   #
   alias magnitude abs
 
@@ -521,6 +529,8 @@ class Numeric
   #     r % -r2               # => (-119/100)
   #     (-r) % r2             # => (119/100)
   #     (-r) %-r2             # => (-21/100)
+  #
+  # Numeric#modulo is an alias for Numeric#%.
   #
   def modulo: (Numeric) -> Numeric
 
@@ -590,17 +600,17 @@ class Numeric
 
   # <!--
   #   rdoc-file=numeric.rb
-  #   - real -> self
+  #   - num.real  ->  self
   # -->
-  # Returns `self`.
+  # Returns self.
   #
   def real: () -> Numeric
 
   # <!--
   #   rdoc-file=numeric.rb
-  #   - real? -> true or false
+  #   - num.real?  ->  true or false
   # -->
-  # Returns `true` if `self` is a real number (i.e. not Complex).
+  # Returns `true` if `num` is a real number (i.e. not Complex).
   #
   def real?: () -> bool
 
@@ -687,11 +697,11 @@ class Numeric
   #     The generated sequence:
   #
   #     - Begins with +self+.
-  #     - Continues at intervals of +by+ (which may not be zero).
-  #     - Ends with the last number that is within or equal to +to+;
-  #       that is, less than or equal to +to+ if +by+ is positive,
-  #       greater than or equal to +to+ if +by+ is negative.
-  #       If +to+ is +nil+, the sequence is of infinite length.
+  #     - Continues at intervals of +step+ (which may not be zero).
+  #     - Ends with the last number that is within or equal to +limit+;
+  #       that is, less than or equal to +limit+ if +step+ is positive,
+  #       greater than or equal to +limit+ if +step+ is negative.
+  #       If +limit+ is not given, the sequence is of infinite length.
   #
   #     If a block is given, calls the block with each number in the sequence;
   #     returns +self+.  If no block is given, returns an Enumerator::ArithmeticSequence.
@@ -733,7 +743,7 @@ class Numeric
   #
   #     <b>Positional Arguments</b>
   #
-  #     With optional positional arguments +to+ and +by+,
+  #     With optional positional arguments +limit+ and +step+,
   #     their values (or defaults) determine the step and limit:
   #
   #       squares = []

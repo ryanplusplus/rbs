@@ -72,7 +72,7 @@
 #
 module DidYouMean
   # <!-- rdoc-file=lib/did_you_mean.rb -->
-  # TODO: Remove on the 3.4 development start:
+  # TODO: Remove on 3.3:
   #
   SPELL_CHECKERS: untyped
 

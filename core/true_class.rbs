@@ -1,99 +1,66 @@
 # <!-- rdoc-file=object.c -->
-# The class of the singleton object `true`.
-#
-# Several of its methods act as operators:
-#
-# *   #&
-# *   #|
-# *   #===
-# *   #^
-#
-#
-# One other method:
-#
-# *   #to_s and its alias #inspect.
+# The global value `true` is the only instance of class TrueClass and represents
+# a logically true value in boolean expressions. The class provides operators
+# allowing `true` to be used in logical expressions.
 #
 class TrueClass
   def !: () -> false
 
   # <!--
   #   rdoc-file=object.c
-  #   - true & object -> true or false
+  #   - true & obj    -> true or false
   # -->
-  # Returns `false` if `object` is `false` or `nil`, `true` otherwise:
-  #
-  # true & Object.new # => true true & false      # => false true & nil        #
-  # => false
+  # And---Returns `false` if *obj* is `nil` or `false`, `true` otherwise.
   #
   def &: (false | nil) -> false
        | (untyped obj) -> bool
 
   # <!--
   #   rdoc-file=object.c
-  #   - true === other -> true or false
-  #   - false === other -> true or false
-  #   - nil === other -> true or false
+  #   - obj === other   -> true or false
   # -->
-  # Returns `true` or `false`.
-  #
-  # Like Object#==, if `object` is an instance of Object (and not an instance of
-  # one of its many subclasses).
-  #
-  # This method is commonly overridden by those subclasses, to provide meaningful
-  # semantics in `case` statements.
+  # Case Equality -- For class Object, effectively the same as calling `#==`, but
+  # typically overridden by descendants to provide meaningful semantics in `case`
+  # statements.
   #
   def ===: (true) -> true
          | (untyped obj) -> bool
 
   # <!--
   #   rdoc-file=object.c
-  #   - true ^ object -> !object
+  #   - true ^ obj   -> !obj
   # -->
-  # Returns `true` if `object` is `false` or `nil`, `false` otherwise:
-  #
-  #     true ^ Object.new # => false
-  #     true ^ false      # => true
-  #     true ^ nil        # => true
+  # Exclusive Or---Returns `true` if *obj* is `nil` or `false`, `false` otherwise.
   #
   def ^: (false | nil) -> true
        | (untyped obj) -> bool
 
   # <!-- rdoc-file=object.c -->
-  # Returns string `'true'`:
-  #
-  #     true.to_s # => "true"
-  #
-  # TrueClass#inspect is an alias for TrueClass#to_s.
+  # The string representation of `true` is "true".
   #
   alias inspect to_s
 
   # <!--
   #   rdoc-file=object.c
-  #   - true.to_s -> 'true'
+  #   - true.to_s   ->  "true"
   # -->
-  # Returns string `'true'`:
-  #
-  #     true.to_s # => "true"
-  #
-  # TrueClass#inspect is an alias for TrueClass#to_s.
+  # The string representation of `true` is "true".
   #
   def to_s: () -> "true"
 
   # <!--
   #   rdoc-file=object.c
-  #   - true | object -> true
+  #   - true | obj   -> true
   # -->
-  # Returns `true`:
+  # Or---Returns `true`. As *obj* is an argument to a method call, it is always
+  # evaluated; there is no short-circuit evaluation in this case.
   #
-  #     true | Object.new # => true
-  #     true | false      # => true
-  #     true | nil        # => true
+  #     true |  puts("or")
+  #     true || puts("logical or")
   #
-  # Argument `object` is evaluated. This is different from `true` with the
-  # short-circuit operator, whose operand is evaluated only if necessary:
+  # *produces:*
   #
-  #     true | raise # => Raises RuntimeError.
-  #     true || raise # => true
+  #     or
   #
   def |: (untyped obj) -> true
 end
