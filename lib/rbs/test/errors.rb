@@ -29,11 +29,8 @@ module RBS
         end
       end
 
-      RESPOND_TO = ::Kernel.instance_method :respond_to?
-      private_constant :RESPOND_TO
-
       def self.inspect_(obj)
-        if RESPOND_TO.bind_call(obj, :inspect)
+        if obj.respond_to?(:inspect)
           obj.inspect
         else
           Test::INSPECT.bind(obj).call     # For the case inspect is not defined (like BasicObject)
