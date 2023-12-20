@@ -1,7 +1,7 @@
 require_relative "test_helper"
 
 class EnumeratorTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing "::Enumerator[::Integer, Array[::Integer]]"
 
@@ -21,7 +21,7 @@ class EnumeratorTest < Test::Unit::TestCase
 end
 
 class EnumeratorSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing "singleton(::Enumerator)"
 
@@ -41,7 +41,7 @@ class EnumeratorSingletonTest < Test::Unit::TestCase
 end
 
 class EnumeratorYielderTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing "::Enumerator::Yielder"
 

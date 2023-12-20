@@ -8,7 +8,7 @@ module RBS
 end
 
 class ENVTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing "::RBS::Unnamed::ENVClass"
 

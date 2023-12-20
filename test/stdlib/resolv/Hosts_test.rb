@@ -2,7 +2,7 @@ require_relative '../test_helper'
 require 'resolv'
 
 class ResolvHostsInstanceTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library 'resolv'
   testing '::Resolv::Hosts'
 

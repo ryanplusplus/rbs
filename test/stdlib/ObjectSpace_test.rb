@@ -2,7 +2,7 @@ require_relative "test_helper"
 require 'objspace'
 
 class ObjectSpaceTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   library "objspace"
   testing "singleton(::ObjectSpace)"

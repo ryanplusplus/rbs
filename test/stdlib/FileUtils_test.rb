@@ -12,7 +12,7 @@ module TmpdirHelper
 end
 
 class FileUtilsSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   include TmpdirHelper
 
   library "fileutils"
@@ -618,7 +618,7 @@ class FileUtilsSingletonTest < Test::Unit::TestCase
 end
 
 class FileUtilsInstanceTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   include TmpdirHelper
 
   library "fileutils"

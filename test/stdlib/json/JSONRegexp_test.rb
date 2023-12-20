@@ -3,7 +3,7 @@ require "json"
 require "json/add/regexp"
 
 class JSONRegexpSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   library "json"
   testing "singleton(::Regexp)"
@@ -15,7 +15,7 @@ class JSONRegexpSingletonTest < Test::Unit::TestCase
 end
 
 class JSONRegexpInstanceTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   library "json"
   testing "::Regexp"

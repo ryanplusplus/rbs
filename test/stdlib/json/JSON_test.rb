@@ -22,7 +22,7 @@ class JsonToS
 end
 
 class JSONSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   library "json"
   testing "singleton(::JSON)"
@@ -174,7 +174,7 @@ class JSONSingletonTest < Test::Unit::TestCase
 end
 
 class JSONInstanceTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   class MyJSON
     include JSON

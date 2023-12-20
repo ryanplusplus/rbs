@@ -1,7 +1,7 @@
 require_relative "test_helper"
 
 class DataSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   testing "singleton(::Data)"
 
   def test_define
@@ -18,7 +18,7 @@ class DataSingletonTest < Test::Unit::TestCase
 end
 
 class DataInstanceTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   testing "::Data"
 
   D = Data.define(:email, :name)

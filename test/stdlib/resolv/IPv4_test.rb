@@ -3,7 +3,7 @@ require 'resolv'
 
 
 class ResolvIPv4SingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library 'resolv'
   testing 'singleton(::Resolv::IPv4)'
 
@@ -19,7 +19,7 @@ class ResolvIPv4SingletonTest < Test::Unit::TestCase
 end
 
 class ResolvIPv4InstanceTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library 'resolv'
   testing '::Resolv::IPv4'
 

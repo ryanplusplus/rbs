@@ -1,7 +1,7 @@
 require_relative "test_helper"
 
 class ThreadSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing "singleton(::Thread)"
 
@@ -33,7 +33,7 @@ class ThreadSingletonTest < Test::Unit::TestCase
 end
 
 class ThreadTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing "::Thread"
 

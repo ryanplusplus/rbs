@@ -1,7 +1,7 @@
 require_relative "../test_helper"
 
 class GemVersionSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing "singleton(::Gem::Version)"
 
@@ -30,7 +30,7 @@ class GemVersionSingletonTest < Test::Unit::TestCase
 end
 
 class GemVersionInstanceTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing "::Gem::Version"
 

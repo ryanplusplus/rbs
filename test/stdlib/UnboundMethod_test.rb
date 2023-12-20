@@ -1,7 +1,7 @@
 require_relative 'test_helper'
 
 class UnboundMethodInstanceTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing '::UnboundMethod'
 
@@ -36,7 +36,7 @@ class UnboundMethodInstanceTest < Test::Unit::TestCase
   end
 
   def test_clone
-    assert_send_type  '() -> ::UnboundMethod',
+    assert_send_type  '() -> instance',
                       UMETH, :clone
   end
 
@@ -83,7 +83,7 @@ class UnboundMethodInstanceTest < Test::Unit::TestCase
                       ParamMeths.instance_method(:tailing_ddd), :parameters
     assert_send_type  '() -> ::Method::param_types',
                       ParamMeths.instance_method(:no_kwargs), :parameters
-
+    
     omit_if(RUBY_VERSION < '3.1')
 
     assert_send_type  '() -> ::Method::param_types',

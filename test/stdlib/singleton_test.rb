@@ -2,8 +2,7 @@ require_relative './test_helper'
 require 'singleton'
 
 class SingletonSingletonTest < Test::Unit::TestCase
-  include TestHelper
-  
+  include TypeAssertions
   library 'singleton'
   testing 'singleton(::Singleton)'
 

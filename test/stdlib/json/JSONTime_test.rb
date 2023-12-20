@@ -3,7 +3,7 @@ require "json"
 require "json/add/time"
 
 class JSONTimeSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   library "json"
   testing "singleton(::Time)"
@@ -15,7 +15,7 @@ class JSONTimeSingletonTest < Test::Unit::TestCase
 end
 
 class JSONTimeInstanceTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   library "json"
   testing "::Time"

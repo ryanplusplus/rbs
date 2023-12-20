@@ -3,7 +3,7 @@ require "json"
 require "json/add/complex"
 
 class JSONComplexSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   library "json"
   testing "singleton(::Complex)"
@@ -15,7 +15,7 @@ class JSONComplexSingletonTest < Test::Unit::TestCase
 end
 
 class JSONComplexInstanceTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   library "json"
   testing "::Complex"

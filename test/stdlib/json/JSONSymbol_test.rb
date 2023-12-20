@@ -3,7 +3,7 @@ require "json"
 require "json/add/symbol"
 
 class JSONSymbolSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   library "json"
   testing "singleton(::Symbol)"
@@ -15,7 +15,7 @@ class JSONSymbolSingletonTest < Test::Unit::TestCase
 end
 
 class JSONSymbolInstanceTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   library "json"
   testing "::Symbol"

@@ -3,7 +3,7 @@ require "json"
 require "json/add/bigdecimal"
 
 class JSONBigDecimalSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   library "json"
   testing "singleton(::BigDecimal)"
@@ -15,7 +15,7 @@ class JSONBigDecimalSingletonTest < Test::Unit::TestCase
 end
 
 class JSONBigDecimalInstanceTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   library "json"
   testing "::BigDecimal"

@@ -1,7 +1,7 @@
 require_relative "test_helper"
 
 class NoMatchingPatternKeyErrorSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing "singleton(::NoMatchingPatternKeyError)"
 
@@ -13,7 +13,7 @@ class NoMatchingPatternKeyErrorSingletonTest < Test::Unit::TestCase
 end
 
 class NoMatchingPatternKeyErrorTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing "::NoMatchingPatternKeyError[Hash[Symbol, untyped], Symbol]"
 

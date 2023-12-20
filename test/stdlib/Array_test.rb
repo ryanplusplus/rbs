@@ -1,7 +1,7 @@
 require_relative "test_helper"
 
 class ArraySingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing "singleton(::Array)"
 
@@ -36,7 +36,7 @@ class ArraySingletonTest < Test::Unit::TestCase
 end
 
 class ArrayInstanceTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing "::Array[::Integer]"
 
@@ -226,7 +226,7 @@ class ArrayInstanceTest < Test::Unit::TestCase
   def test_concat
     assert_send_type "(Array[Integer], Array[Integer]) -> Array[Integer]",
                      [1,2,3], :concat, [4,5,6], [7,8,9]
-    assert_send_type "(Array[Integer], Array[Integer]) -> Array[Integer]",
+    assert_send_type "(Array[Integer], Array[Integer]) -> self",
                      Class.new(Array).new, :concat, [4,5,6], [7,8,9]
   end
 
@@ -240,11 +240,8 @@ class ArrayInstanceTest < Test::Unit::TestCase
   end
 
   def test_cycle
-    assert_send_type(
-      "() { (Integer) -> void } -> nil",
-      [1,2,3], :cycle, &proc { break_from_block }
-    )
-
+    assert_send_type "() { (Integer) -> void } -> nil",
+                     [1,2,3], :cycle do break end
     assert_send_type "(Integer) { (Integer) -> void } -> nil",
                      [1,2,3], :cycle, 3 do end
     assert_send_type "(ToInt) { (Integer) -> void } -> nil",

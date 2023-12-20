@@ -14,7 +14,7 @@ module OpenSSL::TestUtils
 end
 
 class OpenSSLSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "singleton(::OpenSSL)"
 
@@ -51,7 +51,7 @@ end
 
 
 class OpenSSLASN1SingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "singleton(::OpenSSL::ASN1)"
 
@@ -179,16 +179,14 @@ class OpenSSLASN1SingletonTest < Test::Unit::TestCase
   end
 
   def test_traverse
-    der = "\x05\x00".b
-    assert_send_type(
-      "(String) { ([::Integer, ::Integer, ::Integer, ::Integer, bool, Symbol, ::Integer]) -> void } -> void",
-      OpenSSL::ASN1, :traverse, der, &proc { }
-    )
+    der = "\x05\x00\x05\x00".b
+    assert_send_type "(String) { (::Integer, ::Integer, ::Integer, ::Integer, bool, Symbol, ::Integer) -> void } -> void",
+    OpenSSL::ASN1, :traverse, der  do |a, b, c, d, e, f, g| return a, b, c, d, e, f, g end
   end
 end
 
 class OpenSSLASN1ASN1DataTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "::OpenSSL::ASN1::ASN1Data"
 
@@ -224,7 +222,7 @@ class OpenSSLASN1ASN1DataTest < Test::Unit::TestCase
 end
 
 class OpenSSLBNSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "singleton(::OpenSSL::BN)"
 
@@ -237,7 +235,7 @@ class OpenSSLBNSingletonTest < Test::Unit::TestCase
 end
 
 class OpenSSLBNTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "::OpenSSL::BN"
 
@@ -262,7 +260,7 @@ class OpenSSLBNTest < Test::Unit::TestCase
 end
 
 class OpenSSLCipherSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "singleton(::OpenSSL::Cipher)"
 
@@ -275,7 +273,7 @@ end
 
 
 class OpenSSLCipherTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "::OpenSSL::Cipher"
 
@@ -370,7 +368,7 @@ class OpenSSLCipherTest < Test::Unit::TestCase
 end
 
 class OpenSSLConfigSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "singleton(::OpenSSL::Config)"
 
@@ -395,7 +393,7 @@ class OpenSSLConfigSingletonTest < Test::Unit::TestCase
 end
 
 class OpenSSLConfigTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "::OpenSSL::Config"
 
@@ -412,10 +410,8 @@ class OpenSSLConfigTest < Test::Unit::TestCase
   end
 
   def test_each
-    assert_send_type(
-      "() { ([String, String, String]) -> void } -> OpenSSL::Config",
-      config, :each, &proc { }
-    )
+    assert_send_type "() { (String, String, String) -> void } -> OpenSSL::Config",
+      config, :each do |*k| return k; end
   end
 
   private
@@ -426,7 +422,7 @@ class OpenSSLConfigTest < Test::Unit::TestCase
 end
 
 class OpenSSLDigestSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "singleton(::OpenSSL::Digest)"
 
@@ -437,7 +433,7 @@ class OpenSSLDigestSingletonTest < Test::Unit::TestCase
 end
 
 class OpenSSLDigestTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "::OpenSSL::Digest"
 
@@ -474,7 +470,7 @@ class OpenSSLDigestTest < Test::Unit::TestCase
 end
 
 class OpenSSLEngineSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "singleton(::OpenSSL::Engine)"
 
@@ -490,7 +486,7 @@ class OpenSSLEngineSingletonTest < Test::Unit::TestCase
 end if defined?(OpenSSL::Engine)
 
 class OpenSSLEngineTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "::OpenSSL::Engine"
 
@@ -512,7 +508,7 @@ class OpenSSLEngineTest < Test::Unit::TestCase
 end if defined?(OpenSSL::Engine)
 
 class OpenSSLHMACSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "singleton(::OpenSSL::HMAC)"
 
@@ -528,7 +524,7 @@ class OpenSSLHMACSingletonTest < Test::Unit::TestCase
 end
 
 class OpenSSLHMACTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "::OpenSSL::HMAC"
 
@@ -561,7 +557,7 @@ class OpenSSLHMACTest < Test::Unit::TestCase
 end
 
 class OpenSSLKDFSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "singleton(::OpenSSL::KDF)"
 
@@ -601,7 +597,7 @@ class OpenSSLKDFSingletonTest < Test::Unit::TestCase
 end
 
 class OpenSSLNetscapePKITest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "::OpenSSL::Netscape::SPKI"
 
@@ -630,7 +626,7 @@ class OpenSSLNetscapePKITest < Test::Unit::TestCase
 end
 
 class OpenSSLOCSPBasicResponsePKITest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "::OpenSSL::OCSP::BasicResponse"
 
@@ -647,7 +643,7 @@ class OpenSSLOCSPBasicResponsePKITest < Test::Unit::TestCase
 end
 
 class OpenSSLPKeySingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "singleton(::OpenSSL::PKey)"
 
@@ -674,7 +670,7 @@ end
 
 
 class OpenSSLDHTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "::OpenSSL::PKey::DH"
 
@@ -724,7 +720,7 @@ class OpenSSLDHTest < Test::Unit::TestCase
 end
 
 class OpenSSLDSATest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "::OpenSSL::PKey::DSA"
 
@@ -795,7 +791,7 @@ class OpenSSLDSATest < Test::Unit::TestCase
 end
 
 class OpenSSLECSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "singleton(::OpenSSL::PKey::EC)"
 
@@ -811,7 +807,7 @@ class OpenSSLECSingletonTest < Test::Unit::TestCase
 end
 
 class OpenSSLECTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "::OpenSSL::PKey::EC"
 
@@ -867,7 +863,7 @@ class OpenSSLECTest < Test::Unit::TestCase
 end
 
 class OpenSSLRSATest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "::OpenSSL::PKey::RSA"
 
@@ -914,7 +910,7 @@ class OpenSSLRSATest < Test::Unit::TestCase
 end
 
 class OpenSSLRandomSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "singleton(::OpenSSL::Random)"
 
@@ -926,7 +922,7 @@ end
 
 
 class OpenSSLSSLSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "singleton(::OpenSSL::SSL)"
 
@@ -942,7 +938,7 @@ class OpenSSLSSLSingletonTest < Test::Unit::TestCase
 end
 
 class OpenSSLTimestampFactoryTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "::OpenSSL::Timestamp::Factory"
 
@@ -978,7 +974,7 @@ class OpenSSLTimestampFactoryTest < Test::Unit::TestCase
 end if OpenSSL.const_defined?(:Timestamp)
 
 class OpenSSLX509AttributeTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "::OpenSSL::X509::Attribute"
 
@@ -1007,7 +1003,7 @@ end
 
 
 class OpenSSLX509CertificateTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "::OpenSSL::X509::Certificate"
 
@@ -1038,7 +1034,7 @@ end
 
 
 class OpenSSLX509ExtensionTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "::OpenSSL::X509::Extension"
 
@@ -1073,7 +1069,7 @@ class OpenSSLX509ExtensionTest < Test::Unit::TestCase
 end
 
 class OpenSSLX509NameSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "singleton(::OpenSSL::X509::Name)"
 
@@ -1085,7 +1081,7 @@ class OpenSSLX509NameSingletonTest < Test::Unit::TestCase
 end
 
 class OpenSSLX509NameTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "openssl"
   testing "::OpenSSL::X509::Name"
 

@@ -52,7 +52,7 @@ end
 
 
 class GCSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing "singleton(::GC)"
 

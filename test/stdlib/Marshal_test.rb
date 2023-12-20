@@ -3,7 +3,7 @@ require "pathname"
 require "tmpdir"
 
 class MarshalSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   testing "singleton(::Marshal)"
 
   def test_MAJOR_VERSION
@@ -87,7 +87,7 @@ class MarshalSingletonTest < Test::Unit::TestCase
 end
 
 class MarshalIncludeTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   testing "::Marshal"
 
   def test_dump

@@ -1,7 +1,7 @@
 require_relative "test_helper"
 
 class FiberSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing "singleton(::Fiber)"
 
@@ -69,7 +69,7 @@ class FiberSingletonTest < Test::Unit::TestCase
 end
 
 class FiberTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing "::Fiber"
 

@@ -1,7 +1,7 @@
 require_relative "test_helper"
 
 class ThreadGroupInstanceTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing "::ThreadGroup"
 
@@ -11,14 +11,14 @@ class ThreadGroupInstanceTest < Test::Unit::TestCase
 
   def test_add
     thr = Thread.new{}
-    assert_send_type  '(Thread) -> ::ThreadGroup',
+    assert_send_type  '(Thread) -> self',
                       ThreadGroup.new, :add, thr
   ensure
     thr.kill
   end
 
   def test_enclose
-    assert_send_type  '() -> ::ThreadGroup',
+    assert_send_type  '() -> self',
                       ThreadGroup.new, :enclose
   end
 

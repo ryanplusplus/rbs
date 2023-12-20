@@ -3,7 +3,7 @@ require_relative "test_helper"
 require "securerandom"
 
 class KernelSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing "singleton(::Kernel)"
 
@@ -912,7 +912,7 @@ class KernelTest < StdlibTest
 end
 
 class KernelInstanceTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing "::Kernel"
 
@@ -976,26 +976,26 @@ class KernelInstanceTest < Test::Unit::TestCase
 
   def test_initialize_copy
     assert_send_type(
-      "(Object) -> Object",
+      "(self) -> self",
       Object.new, :initialize_copy, Object.new
     )
   end
 
   def test_initialize_clone
     assert_send_type(
-      "(Object) -> Object",
+      "(self) -> self",
       Object.new, :initialize_clone, Object.new
     )
 
     assert_send_type(
-      "(Object, freeze: bool) -> Object",
+      "(self, freeze: bool) -> self",
       Object.new, :initialize_clone, Object.new, freeze: true
     )
   end
 
   def test_initialize_dup
     assert_send_type(
-      "(Object) -> Object",
+      "(self) -> self",
       Object.new, :initialize_dup, Object.new
     )
   end

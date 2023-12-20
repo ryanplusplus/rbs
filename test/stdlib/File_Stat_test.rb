@@ -1,7 +1,7 @@
 require_relative "test_helper"
 
 class FileStatSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing "singleton(::File::Stat)"
 
@@ -12,7 +12,7 @@ class FileStatSingletonTest < Test::Unit::TestCase
 end
 
 class FileStatInstanceTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing "::File::Stat"
 

@@ -2,7 +2,7 @@ require_relative "test_helper"
 require "pstore"
 
 class PStoreSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library "pstore"
   testing "singleton(::PStore)"
 

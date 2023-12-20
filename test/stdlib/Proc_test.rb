@@ -63,7 +63,7 @@ class ProcTest < StdlibTest
 end
 
 class ProcInstanceTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing '::Proc'
 

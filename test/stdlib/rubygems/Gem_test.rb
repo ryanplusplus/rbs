@@ -1,7 +1,7 @@
 require_relative "../test_helper"
 
 class GemSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   class HashLike
     def initialize(pairs)

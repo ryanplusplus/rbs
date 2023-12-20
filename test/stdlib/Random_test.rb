@@ -1,7 +1,7 @@
 require_relative "test_helper"
 
 class RandomSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing "singleton(::Random)"
 
@@ -41,7 +41,7 @@ class RandomSingletonTest < Test::Unit::TestCase
 end
 
 class RandomTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing "::Random"
 

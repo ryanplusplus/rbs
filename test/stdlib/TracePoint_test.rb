@@ -1,7 +1,7 @@
 require_relative "test_helper"
 
 class TracePointSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing "singleton(::TracePoint)"
 
@@ -28,7 +28,7 @@ class TracePointSingletonTest < Test::Unit::TestCase
 end
 
 class TracePointTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing "::TracePoint"
 

@@ -393,7 +393,7 @@ class HashTest < StdlibTest
 end
 
 class HashInstanceTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing "::Hash[::Symbol, ::Integer]"
 

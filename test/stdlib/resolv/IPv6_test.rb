@@ -3,7 +3,7 @@ require 'resolv'
 
 
 class ResolvIPv6SingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library 'resolv'
   testing 'singleton(::Resolv::IPv6)'
 
@@ -18,7 +18,7 @@ class ResolvIPv6SingletonTest < Test::Unit::TestCase
 end
 
 class ResolvIPv6InstanceTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
   library 'resolv'
   testing '::Resolv::IPv6'
 

@@ -2,7 +2,7 @@ require_relative "test_helper"
 require "date"
 
 class DateSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   library "date"
   testing "singleton(::Date)"
@@ -239,7 +239,7 @@ class DateSingletonTest < Test::Unit::TestCase
 end
 
 class DateTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   library "date"
   testing "::Date"

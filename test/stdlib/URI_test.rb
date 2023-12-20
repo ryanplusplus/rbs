@@ -2,7 +2,7 @@ require_relative "test_helper"
 require "uri"
 
 class URISingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   library "uri"
   testing "singleton(::URI)"
@@ -119,7 +119,7 @@ class URISingletonTest < Test::Unit::TestCase
 end
 
 class URIInstanceTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   library "uri"
   testing "::URI::Generic"

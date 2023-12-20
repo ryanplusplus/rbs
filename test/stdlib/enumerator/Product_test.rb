@@ -1,7 +1,7 @@
 require_relative "../test_helper"
 
 class EnumeratorProductInstanceTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing "::Enumerator::Product[::Integer | ::String]"
 
@@ -34,7 +34,7 @@ class EnumeratorProductInstanceTest < Test::Unit::TestCase
 end
 
 class EnumeratorProductSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing "singleton(::Enumerator::Product)"
 

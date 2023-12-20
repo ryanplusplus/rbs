@@ -3,7 +3,7 @@ require_relative "test_helper"
 require "etc"
 
 class EtcSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   library "etc"
   testing "singleton(::Etc)"

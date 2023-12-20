@@ -1,7 +1,7 @@
 require_relative "test_helper"
 
 class ModuleSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing "singleton(::Module)"
 
@@ -19,7 +19,7 @@ class ModuleSingletonTest < Test::Unit::TestCase
 end
 
 class ModuleInstanceTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   testing "::Module"
 

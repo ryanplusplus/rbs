@@ -2,7 +2,7 @@ require_relative "../test_helper"
 require "uri"
 
 class URIRFC2396_ParserSingletonTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   library "uri"
   testing "singleton(::URI::RFC2396_Parser)"
@@ -14,7 +14,7 @@ class URIRFC2396_ParserSingletonTest < Test::Unit::TestCase
 end
 
 class URIRFC2396_ParserInstanceTest < Test::Unit::TestCase
-  include TestHelper
+  include TypeAssertions
 
   library "uri"
   testing "::URI::RFC2396_Parser"
