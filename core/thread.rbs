@@ -1624,15 +1624,6 @@ class Thread::Queue < Object
 
   # <!--
   #   rdoc-file=thread_sync.c
-  #   - freeze
-  # -->
-  # Raises an exception:
-  #     Queue.new.freeze # Raises TypeError (cannot freeze #<Thread::Queue:0x...>)
-  #
-  def freeze: () -> bot
-
-  # <!--
-  #   rdoc-file=thread_sync.c
   #   - length
   #   - size
   # -->
@@ -1706,15 +1697,6 @@ class Thread::SizedQueue < Thread::Queue
   # -->
   #
   alias enq push
-
-  # <!--
-  #   rdoc-file=thread_sync.c
-  #   - freeze
-  # -->
-  # Raises an exception:
-  #     Queue.new.freeze # Raises TypeError (cannot freeze #<Thread::Queue:0x...>)
-  #
-  def freeze: () -> bot
 
   # <!--
   #   rdoc-file=thread_sync.c

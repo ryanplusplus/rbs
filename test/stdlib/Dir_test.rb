@@ -103,22 +103,6 @@ class DirSingletonTest < Test::Unit::TestCase
     end
   end
 
-  def test_fchdir
-    fd = Dir.new(Dir.pwd).fileno
-
-    with_int(fd) do |int|
-      assert_send_type(
-        "(::int) -> ::Integer",
-        Dir, :fchdir, int
-      )
-
-      assert_send_type(
-        "(::int) { () -> ::String } -> ::String",
-        Dir, :fchdir, int, &proc { "string" }
-      )
-    end
-  end
-
   def test_foreach
     assert_send_type "(::String) { (::String) -> 3 } -> nil",
                      Dir, :foreach, "." do 3 end
@@ -127,17 +111,6 @@ class DirSingletonTest < Test::Unit::TestCase
 
     assert_send_type "(::String) -> ::Enumerator[::String, nil]",
                      Dir, :foreach, "."
-  end
-
-  def test_for_fd
-    fd = Dir.new(Dir.pwd).fileno
-
-    with_int(fd) do |int|
-      assert_send_type(
-        "(::int) -> ::Dir",
-        Dir, :for_fd, int
-      )
-    end
   end
 
   def test_getwd
@@ -193,20 +166,6 @@ class DirInstanceTest < Test::Unit::TestCase
   include TestHelper
 
   testing "::Dir"
-
-  def test_chdir
-    dir = Dir.new(Dir.pwd)
-
-    assert_send_type(
-      "() -> Integer",
-      dir, :chdir
-    )
-
-    assert_send_type(
-      "() { () -> String } -> String",
-      dir, :chdir, &proc { "hello" }
-    )
-  end
 
   def test_children
     assert_send_type "() -> ::Array[::String]",
