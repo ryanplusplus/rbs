@@ -503,7 +503,6 @@ PARSE_KEYWORDS:
 
     case tUIDENT:
     case tLIDENT:
-    case tQIDENT:
     case tULIDENT:
     case tULLIDENT:
     case tBANGIDENT:
