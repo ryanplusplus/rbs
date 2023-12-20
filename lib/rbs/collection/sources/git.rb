@@ -248,7 +248,7 @@ module RBS
               if gem_name
                 versions[gem_name.to_s] ||= Set[]
 
-                if version && !version.basename.to_s.start_with?('_')
+                if version
                   versions[gem_name.to_s] << version.basename.to_s
                 end
               end
