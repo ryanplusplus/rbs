@@ -97,11 +97,7 @@ start:
       "as"            { return next_token(state, kAS); }
       "__todo__"      { return next_token(state, k__TODO__); }
 
-      unicode_char = "\\u" [0-9a-fA-F]{4};
-      oct_char = "\\x" [0-9a-f]{1,2};
-      hex_char = "\\" [0-7]{1,3};
-
-      dqstring = ["] (unicode_char | oct_char | hex_char | "\\" [^xu] | [^\\"\x00])* ["];
+      dqstring = ["] ("\\"[abefnrstv"\\] | [^"\\\x00])* ["];
       sqstring = ['] ("\\"['\\] | [^'\x00])* ['];
 
       dqstring     { return next_token(state, tDQSTRING); }
