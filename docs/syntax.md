@@ -44,7 +44,7 @@ _literal_ ::= _string-literal_
             | `true`
             | `false`
 
-_proc_ ::= `^` _parameters?_ _self-type-binding?_ _block?_ `->` _type_
+_proc_ ::= _parameters?_ _self-type-binding?_ _block?_ `->` _type_
 ```
 
 ### Class instance type
@@ -311,6 +311,8 @@ end
 ```markdown
 _method-type_ ::= _parameters?_ _block?_ `->` _type_                # Method type
 
+_proc_ ::= `^` _parameters?_ _self-type-binding?_ _block?_ `->` _type_  # Proc type
+
 _parameters?_ ::=                   (Empty)
                 | _parameters_      (Parameters)
 
@@ -433,8 +435,8 @@ _visibility-member_ ::= _visibility_
 
 _ivar-name_ ::= /@\w+/
 _cvar-name_ ::= /@@\w+/
-_method-name_ ::= _most of the possible ruby method names_
-                | /`[^`]+`/                   # Quoted method names
+_method-name_ ::= ...
+                | /`[^`]+`/
 ```
 
 ### Ivar definition
