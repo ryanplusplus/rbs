@@ -2,12 +2,11 @@
 
 module RBS
   class Diff
-    def initialize(type_name:, library_options:, after_path: [], before_path: [], detail: false)
+    def initialize(type_name:, library_options:, after_path: [], before_path: [])
       @type_name = type_name
       @library_options = library_options
       @after_path = after_path
       @before_path = before_path
-      @detail = detail
     end
 
     def each_diff(&block)
@@ -101,12 +100,11 @@ module RBS
       if definition_method
         prefix = kind == :instance ? "" : "self."
 
-        detail_to_s = @detail ? "[#{definition_method.defined_in} #{definition_method.accessibility}] " : ""
         if definition_method.alias_of
           first_def = definition_method.alias_of.defs.first #: Definition::Method::TypeDef
-          "#{detail_to_s}alias #{prefix}#{key} #{prefix}#{first_def.member.name}"
+          "alias #{prefix}#{key} #{prefix}#{first_def.member.name}"
         else
-          "#{detail_to_s}def #{prefix}#{key}: #{definition_method.method_types.join(" | ")}"
+          "def #{prefix}#{key}: #{definition_method.method_types.join(" | ")}"
         end
       else
         +"-"
@@ -115,8 +113,7 @@ module RBS
 
     def constant_to_s(constant)
       if constant
-        detail_to_s = @detail ? "[#{constant.name.namespace.to_type_name.to_s}] " : ""
-        "#{detail_to_s}#{constant.name.name}: #{constant.type}"
+        "#{constant.name.name}: #{constant.type}"
       else
         +"-"
       end
