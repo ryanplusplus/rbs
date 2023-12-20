@@ -1160,8 +1160,7 @@ class IO < Object
   #     f.gets(chomp: true) # => nil
   #     f.close
   #
-  def gets: (string? sep, ?int limit, ?chomp: boolish) -> String?
-          | (?int limit, ?chomp: boolish) -> String?
+  def gets: (?String sep, ?Integer limit) -> String?
 
   # <!--
   #   rdoc-file=io.c
