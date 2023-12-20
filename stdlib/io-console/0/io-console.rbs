@@ -106,14 +106,8 @@ class IO
 
   # <!--
   #   rdoc-file=ext/io/console/console.c
-  #   - io.cursor -> [row, column]
+  #   - cursor()
   # -->
-  # Returns the current cursor position as a two-element array of integers (row,
-  # column)
-  #
-  #     io.cursor # => [3, 5]
-  #
-  # You must require 'io/console' to use this method.
   #
   def cursor: () -> [ Integer, Integer ]
 

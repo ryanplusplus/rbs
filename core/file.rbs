@@ -931,15 +931,8 @@ class File < IO
 
   # <!--
   #   rdoc-file=file.c
-  #   - File.birthtime(file_name)  -> time
+  #   - birthtime(p1)
   # -->
-  # Returns the birth time for the named file.
-  #
-  # *file_name* can be an IO object.
-  #
-  #     File.birthtime("testfile")   #=> Wed Apr 09 08:53:13 CDT 2003
-  #
-  # If the platform doesn't have birthtime, raises NotImplementedError.
   #
   def self.birthtime: (string | _ToPath | IO file_name) -> Time
 
@@ -1921,11 +1914,8 @@ class File < IO
 
   # <!--
   #   rdoc-file=file.c
-  #   - file.size    -> integer
+  #   - size()
   # -->
-  # Returns the size of *file* in bytes.
-  #
-  #     File.new("testfile").size   #=> 66
   #
   def size: () -> Integer
 
@@ -2514,12 +2504,19 @@ class File::Stat < Object
 
   # <!--
   #   rdoc-file=file.c
-  #   - stat.directory?   -> true or false
+  #   - File.directory?(path) -> true or false
   # -->
-  # Returns `true` if *stat* is a directory, `false` otherwise.
+  # With string `object` given, returns `true` if `path` is a string path leading
+  # to a directory, or to a symbolic link to a directory; `false` otherwise:
   #
-  #     File.stat("testfile").directory?   #=> false
-  #     File.stat(".").directory?          #=> true
+  #     File.directory?('.')              # => true
+  #     File.directory?('foo')            # => false
+  #     File.symlink('.', 'dirlink')      # => 0
+  #     File.directory?('dirlink')        # => true
+  #     File.symlink('t,txt', 'filelink') # => 0
+  #     File.directory?('filelink')       # => false
+  #
+  # Argument `path` can be an IO object.
   #
   def directory?: () -> bool
 
