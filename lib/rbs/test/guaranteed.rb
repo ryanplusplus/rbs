@@ -10,7 +10,8 @@ module RBS
 
         module_function def guaranteed_inspect(obj)
           obj.inspect
-        rescue NoMethodError
+        rescue NoMethodError => err
+          raise unless err.name == :inspect && EQUAL.bind_call(obj, err.receiver)
           INSPECT.bind_call(obj)
         end
 
@@ -19,7 +20,7 @@ module RBS
 
           instance_variables.each_with_index do |variable, index|
             string.concat ', ' unless index.zero?
-            string.concat "#{variable}: #{guaranteed_inspect(instance_variable_get(variable))}"
+            string.concat "#{variable}: #{guaranteed_inspect(variable)}"
           end
 
           string.concat '>'
